@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outreach Swipe File — Get 10 Clients</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}html,body{background:#0a1628;}
+body{font-family:'DM Sans',sans-serif;color:#fff;line-height:1.6;}a{text-decoration:none;color:inherit;}
+nav{background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(26,86,219,0.3);padding:16px 24px;position:sticky;top:0;z-index:100;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.logo-mark{display:flex;align-items:center;gap:12px;}.logo-icon{background:linear-gradient(135deg,#1a56db,#3b82f6);color:#fff;font-size:1.1rem;font-weight:900;width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;}
+.logo-text{display:flex;flex-direction:column;}.logo-top{font-size:0.95rem;font-weight:900;color:#fff;}.logo-bottom{font-size:0.65rem;font-weight:600;color:#60a5fa;letter-spacing:0.06em;text-transform:uppercase;}
+.nav-links{display:flex;gap:20px;font-size:0.85rem;font-weight:600;color:#94a3b8;}.nav-links a:hover{color:#fff;}
+.content{max-width:900px;margin:0 auto;padding:52px 24px;}
+.bonus-badge{display:inline-block;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);color:#fde68a;padding:6px 16px;border-radius:100px;font-size:0.8rem;font-weight:700;margin-bottom:16px;}
+h1{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:900;margin-bottom:12px;}
+.sub{color:#94a3b8;margin-bottom:36px;}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;}
+.tab{padding:9px 18px;border-radius:8px;font-size:0.85rem;font-weight:700;cursor:pointer;border:1px solid rgba(26,86,219,0.25);color:#94a3b8;background:#111d35;transition:all 0.2s;}
+.tab.active{background:linear-gradient(135deg,#1a56db,#3b82f6);color:#fff;border-color:transparent;}
+.tab-content{display:none;}.tab-content.active{display:block;}
+.script-card{background:#111d35;border:1px solid rgba(26,86,219,0.22);border-radius:13px;padding:28px;margin-bottom:20px;}
+.script-label{color:#60a5fa;font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;}
+.script-card h3{font-size:1rem;font-weight:800;margin-bottom:14px;}
+.script-body{background:#0a1628;border:1px solid rgba(255,255,255,0.08);border-radius:9px;padding:20px;font-size:0.9rem;color:#cbd5e1;line-height:1.7;white-space:pre-wrap;margin-bottom:14px;}
+.copy-btn{background:rgba(26,86,219,0.15);border:1px solid rgba(26,86,219,0.3);color:#60a5fa;padding:8px 16px;border-radius:7px;font-size:0.8rem;font-weight:700;cursor:pointer;transition:all 0.2s;}
+.copy-btn:hover{background:rgba(26,86,219,0.3);}
+.copy-btn.copied{background:rgba(134,239,172,0.15);border-color:rgba(134,239,172,0.3);color:#86efac;}
+footer{background:#060e1c;text-align:center;padding:24px;color:#64748b;font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.05);}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="/" class="logo-mark"><div class="logo-icon">10</div><div class="logo-text"><span class="logo-top">GET 10 CLIENTS</span><span class="logo-bottom">30-Day Local Business Challenge</span></div></a>
+  <div class="nav-links"><a href="/members">Home</a><a href="/members#modules">Modules</a><a href="/members#bonuses">Bonuses</a><a href="mailto:support@get10clients.com">Support</a></div>
+</div></nav>
+
+<div class="content">
+  <div class="bonus-badge">📧 Bonus — Outreach Swipe File</div>
+  <h1>15 Outreach Scripts That Get Responses</h1>
+  <p class="sub">Copy, paste, and customize. These scripts are proven to get replies from local business owners.</p>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('cold')">Cold DM / Email</div>
+    <div class="tab" onclick="showTab('followup')">Follow-Up</div>
+    <div class="tab" onclick="showTab('voicemail')">Voicemail</div>
+  </div>
+
+  <div id="cold" class="tab-content active">
+    <div class="script-card">
+      <div class="script-label">Script 1 — Instagram DM (Cold)</div>
+      <h3>The Simple Compliment Opener</h3>
+      <div class="script-body" id="s1">Hey [Name] — love what you've done with [specific thing about their business]. Quick question — are you currently doing anything to bring in new customers online? I help local businesses in [your city] get more visibility. Happy to share what's working if it'd be useful.</div>
+      <button class="copy-btn" onclick="copyScript('s1', this)">Copy Script</button>
+    </div>
+    <div class="script-card">
+      <div class="script-label">Script 2 — Email (Cold)</div>
+      <h3>The Spotted Something Opener</h3>
+      <div class="script-body" id="s2">Subject: Quick question about [Business Name]
+
+Hi [Name],
+
+I was searching for [their type of business] in [city] and came across [Business Name]. Impressive reviews — looks like you're doing a lot right.
+
+I noticed you might not be showing up on the first page of Google for a couple of key searches. That could be leaving some customers on the table.
+
+I help local businesses fix exactly that. Would it make sense to jump on a quick 10-minute call to see if I can help?
+
+[Your name]</div>
+      <button class="copy-btn" onclick="copyScript('s2', this)">Copy Script</button>
+    </div>
+    <div class="script-card">
+      <div class="script-label">Script 3 — Facebook DM (Cold)</div>
+      <h3>The Local Community Angle</h3>
+      <div class="script-body" id="s3">Hi [Name], I'm a local marketer here in [city] and I've been following [Business Name] — you guys always show up at the community events. I help local businesses like yours get more customers through social media and Google. Not sure if it's something you'd be open to exploring, but happy to chat if so. No pressure at all.</div>
+      <button class="copy-btn" onclick="copyScript('s3', this)">Copy Script</button>
+    </div>
+    <div class="script-card">
+      <div class="script-label">Script 4 — Text Message (Cold)</div>
+      <h3>The Short and Direct</h3>
+      <div class="script-body" id="s4">Hi [Name], this is [Your name] — local marketing consultant in [city]. I help businesses like [Business Name] get more customers online. Would you be open to a quick 10-minute call this week?</div>
+      <button class="copy-btn" onclick="copyScript('s4', this)">Copy Script</button>
+    </div>
+    <div class="script-card">
+      <div class="script-label">Script 5 — LinkedIn (Cold)</div>
+      <h3>The Professional Opener</h3>
+      <div class="script-body" id="s5">Hi [Name] — I came across your profile while looking at local businesses in [city]. I specialize in helping [their industry] owners attract more customers through digital marketing. Would love to connect and see if there's any way I can add value. No pitch — just a quick conversation.</div>
+      <button class="copy-btn" onclick="copyScript('s5', this)">Copy Script</button>
+    </div>
+  </div>
+
+  <div id="followup" class="tab-content">
+    <div class="script-card">
+      <div class="script-label">Script 6 — Follow-Up #1 (Day 3)</div>
+      <h3>The Gentle Bump</h3>
+      <div class="script-body" id="s6">Hey [Name] — just wanted to follow up on my message from a few days ago. Totally understand if now isn't the right time. If you're ever curious about what's working for other [their industry] businesses in [city], I'm happy to share. No strings attached.</div>
+      <button class="copy-btn" onclick="copyScript('s6', this)">Copy Script</button>
+    </div>
+    <div class="script-card">
+      <div class="script-label">Script 7 — Follow-Up #2 (Day 5)</div>
+      <h3>The Value Add</h3>
+      <div class="script-body" id="s7">Hi [Name] — one last follow-up and then I'll leave you alone, I promise. I put together a quick list of 3 things [their industry] businesses in [city] are doing right now to get more customers. Happy to send it over if you'd like — completely free, no catch.</div>
+      <button class="copy-btn" onclick="copyScript('s7', this)">Copy Script</button>
+    </div>
+    <div class="script-card">
+      <div class="script-label">Script 8 — Follow-Up #3 (Day 7)</div>
+      <h3>The Graceful Exit</h3>
+      <div class="script-body" id="s8">Hey [Name] — I'll stop reaching out after this. If the timing ever feels right to explore how to get more customers for [Business Name], feel free to reach back out. Wishing you a great rest of the week.</div>
+      <button class="copy-btn" onclick="copyScript('s8', this)">Copy Script</button>
+    </div>
+    <div class="script-card">
+      <div class="script-label">Script 9 — After Discovery Call (No Response)</div>
+      <h3>The Post-Call Follow-Up</h3>
+      <div class="script-body" id="s9">Hi [Name] — it was great speaking with you earlier this week. I put together a quick proposal based on what we discussed. Just wanted to check in and see if you had any questions before I send it over. Let me know what works!</div>
+      <button class="copy-btn" onclick="copyScript('s9', this)">Copy Script</button>
+    </div>
+    <div class="script-card">
+      <div class="script-label">Script 10 — After Proposal Sent</div>
+      <h3>The Proposal Follow-Up (48 Hours)</h3>
+      <div class="script-body" id="s10">Hi [Name] — just checking in on the proposal I sent over. Happy to answer any questions or adjust anything to make it work better for you. Let me know your thoughts when you get a chance!</div>
+      <button class="copy-btn" onclick="copyScript('s10', this)">Copy Script</button>
+    </div>
+  </div>
+
+  <div id="voicemail" class="tab-content">
+    <div class="script-card">
+      <div class="script-label">Script 11 — Voicemail #1</div>
+      <h3>The Short Intro</h3>
+      <div class="script-body" id="s11">Hi [Name], this is [Your name] calling about [Business Name]. I'm a local marketing consultant here in [city] and I had a quick idea I wanted to share with you about getting more customers online. I'll send you a quick text as well. My number is [your number]. Thanks!</div>
+      <button class="copy-btn" onclick="copyScript('s11', this)">Copy Script</button>
+    </div>
+    <div class="script-card">
+      <div class="script-label">Script 12 — Voicemail #2</div>
+      <h3>The Specific Insight</h3>
+      <div class="script-body" id="s12">Hi [Name], [Your name] again. I was looking at your Google Business profile and noticed something that might be costing you customers. Takes about 10 minutes to fix. Would love to share it with you — no charge. Give me a call back at [your number] when you get a chance. Thanks!</div>
+      <button class="copy-btn" onclick="copyScript('s12', this)">Copy Script</button>
+    </div>
+    <div class="script-card">
+      <div class="script-label">Script 13 — Referral Introduction</div>
+      <h3>When a Mutual Contact Referred You</h3>
+      <div class="script-body" id="s13">Hi [Name], my name is [Your name] and [Referral name] suggested I reach out. I help local businesses in [city] get more customers and [Referral name] thought we might be a good fit to talk. Would love to set up a quick 10-minute call — my number is [your number]. Looking forward to connecting!</div>
+      <button class="copy-btn" onclick="copyScript('s13', this)">Copy Script</button>
+    </div>
+    <div class="script-card">
+      <div class="script-label">Script 14 — After Meeting In Person</div>
+      <h3>The In-Person Follow-Up</h3>
+      <div class="script-body" id="s14">Hey [Name], great meeting you at [event/location] today. This is [Your name]. I'd love to follow up on our conversation about helping [Business Name] get more customers online. How does your schedule look this week for a quick call?</div>
+      <button class="copy-btn" onclick="copyScript('s14', this)">Copy Script</button>
+    </div>
+    <div class="script-card">
+      <div class="script-label">Script 15 — Re-Engagement (Past Lead)</div>
+      <h3>Reaching Out to an Old Prospect</h3>
+      <div class="script-body" id="s15">Hi [Name], this is [Your name] — we spoke a few months back about marketing for [Business Name]. I know the timing wasn't right then, but I've been working with a few [their industry] owners in [city] recently with great results. Wanted to check in and see if things had changed. Would love to reconnect if so!</div>
+      <button class="copy-btn" onclick="copyScript('s15', this)">Copy Script</button>
+    </div>
+  </div>
+</div>
+
+<footer>&copy; 2026 Get 10 Clients &middot; All Rights Reserved</footer>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+function copyScript(id, btn) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy Script'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>

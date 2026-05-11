@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One-Page Proposal Template — Get 10 Clients</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}html,body{background:#0a1628;}
+body{font-family:'DM Sans',sans-serif;color:#fff;line-height:1.6;}a{text-decoration:none;color:inherit;}
+nav{background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(26,86,219,0.3);padding:16px 24px;position:sticky;top:0;z-index:100;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.logo-mark{display:flex;align-items:center;gap:12px;}.logo-icon{background:linear-gradient(135deg,#1a56db,#3b82f6);color:#fff;font-size:1.1rem;font-weight:900;width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;}
+.logo-text{display:flex;flex-direction:column;}.logo-top{font-size:0.95rem;font-weight:900;color:#fff;}.logo-bottom{font-size:0.65rem;font-weight:600;color:#60a5fa;letter-spacing:0.06em;text-transform:uppercase;}
+.nav-links{display:flex;gap:20px;font-size:0.85rem;font-weight:600;color:#94a3b8;}.nav-links a:hover{color:#fff;}
+.content{max-width:900px;margin:0 auto;padding:52px 24px;}
+.bonus-badge{display:inline-block;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);color:#fde68a;padding:6px 16px;border-radius:100px;font-size:0.8rem;font-weight:700;margin-bottom:16px;}
+h1{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:900;margin-bottom:12px;}
+.sub{color:#94a3b8;margin-bottom:36px;}
+.editor{background:#111d35;border:1px solid rgba(26,86,219,0.22);border-radius:16px;padding:36px;margin-bottom:24px;}
+.editor h2{font-size:1rem;font-weight:800;color:#60a5fa;margin-bottom:20px;text-transform:uppercase;letter-spacing:0.06em;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.form-group{margin-bottom:16px;}
+label{display:block;font-size:0.8rem;font-weight:700;color:#94a3b8;margin-bottom:6px;}
+input,textarea,select{width:100%;background:#0a1628;border:1px solid rgba(26,86,219,0.25);color:#fff;padding:10px 14px;border-radius:8px;font-size:0.9rem;font-family:'DM Sans',sans-serif;}
+textarea{resize:vertical;min-height:80px;}
+.pkg-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px;}
+.generate-btn{background:linear-gradient(135deg,#1a56db,#3b82f6);color:#fff;padding:13px 28px;border-radius:9px;font-weight:800;font-size:0.95rem;border:none;cursor:pointer;margin-bottom:28px;}
+.preview{background:#fff;color:#1a1a1a;border-radius:13px;padding:48px;margin-bottom:24px;display:none;}
+.preview h2{font-size:1.5rem;font-weight:900;margin-bottom:4px;color:#0a1628;}
+.preview .tagline{color:#1a56db;font-size:0.85rem;font-weight:700;margin-bottom:28px;}
+.preview hr{border:none;border-top:2px solid #1a56db;margin:20px 0;}
+.preview .section-head{font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#64748b;margin-bottom:8px;}
+.preview p{font-size:0.95rem;margin-bottom:16px;color:#374151;}
+.pkg-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:20px 0;}
+.pkg-card{border:2px solid #e5e7eb;border-radius:10px;padding:20px;text-align:center;}
+.pkg-card.middle{border-color:#1a56db;background:#eff6ff;}
+.pkg-card h3{font-size:0.85rem;font-weight:800;margin-bottom:4px;color:#0a1628;}
+.pkg-card .price{font-size:1.6rem;font-weight:900;color:#1a56db;margin:8px 0;}
+.pkg-card p{font-size:0.8rem;color:#64748b;}
+.copy-btn{background:#0a1628;color:#fff;padding:11px 24px;border-radius:8px;font-weight:700;font-size:0.88rem;border:none;cursor:pointer;margin-right:10px;}
+.copy-btn.copied{background:#1a56db;}
+footer{background:#060e1c;text-align:center;padding:24px;color:#64748b;font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.05);}
+@media(max-width:600px){.form-row,.pkg-row,.pkg-cards{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="/" class="logo-mark"><div class="logo-icon">10</div><div class="logo-text"><span class="logo-top">GET 10 CLIENTS</span><span class="logo-bottom">30-Day Local Business Challenge</span></div></a>
+  <div class="nav-links"><a href="/members">Home</a><a href="/members#modules">Modules</a><a href="/members#bonuses">Bonuses</a><a href="mailto:support@get10clients.com">Support</a></div>
+</div></nav>
+
+<div class="content">
+  <div class="bonus-badge">📋 Bonus — One-Page Proposal Template</div>
+  <h1>Build Your Client Proposal</h1>
+  <p class="sub">Fill in the details below and generate a clean, professional one-page proposal ready to send.</p>
+
+  <div class="editor">
+    <h2>Your Info</h2>
+    <div class="form-row">
+      <div class="form-group"><label>Your Name</label><input id="yourName" placeholder="e.g. John Smith"></div>
+      <div class="form-group"><label>Your Business Name</label><input id="yourBiz" placeholder="e.g. Smith Marketing Co."></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Client Business Name</label><input id="clientBiz" placeholder="e.g. Sunrise Cafe"></div>
+      <div class="form-group"><label>Client Owner Name</label><input id="clientName" placeholder="e.g. Maria Lopez"></div>
+    </div>
+    <div class="form-group"><label>Their Main Problem (from discovery call)</label><textarea id="problem" placeholder="e.g. Maria mentioned she's getting very few new customers from online search and her Google profile hasn't been updated in over a year..."></textarea></div>
+    <div class="form-group"><label>Your Solution (what you'll do for them)</label><textarea id="solution" placeholder="e.g. Set up and optimize their Google Business Profile, create a monthly social media content calendar, and run a targeted local Facebook ad campaign..."></textarea></div>
+    <div class="form-group"><label>Expected Result / Outcome</label><input id="result" placeholder="e.g. 20-30% increase in new customer inquiries within 60 days"></div>
+    <div class="form-group"><label>Proposed Start Date</label><input id="startDate" type="date"></div>
+  </div>
+
+  <div class="editor">
+    <h2>Pricing Packages</h2>
+    <div class="pkg-row">
+      <div>
+        <div class="form-group"><label>Package 1 Name</label><input id="pkg1name" placeholder="e.g. Starter" value="Starter"></div>
+        <div class="form-group"><label>Package 1 Price/Month</label><input id="pkg1price" placeholder="e.g. $497" value="$497/mo"></div>
+        <div class="form-group"><label>Package 1 Description</label><input id="pkg1desc" placeholder="e.g. Google profile + 8 social posts/mo" value="Google profile + 8 social posts/mo"></div>
+      </div>
+      <div>
+        <div class="form-group"><label>Package 2 Name (Recommended)</label><input id="pkg2name" placeholder="e.g. Growth" value="Growth"></div>
+        <div class="form-group"><label>Package 2 Price/Month</label><input id="pkg2price" placeholder="e.g. $797" value="$797/mo"></div>
+        <div class="form-group"><label>Package 2 Description</label><input id="pkg2desc" placeholder="e.g. Everything + Facebook Ads" value="Everything in Starter + Facebook Ads ($300 ad budget included)"></div>
+      </div>
+      <div>
+        <div class="form-group"><label>Package 3 Name</label><input id="pkg3name" placeholder="e.g. Premium" value="Premium"></div>
+        <div class="form-group"><label>Package 3 Price/Month</label><input id="pkg3price" placeholder="e.g. $1,197" value="$1,197/mo"></div>
+        <div class="form-group"><label>Package 3 Description</label><input id="pkg3desc" placeholder="e.g. Full done-for-you service" value="Full done-for-you — ads, content, email + monthly strategy call"></div>
+      </div>
+    </div>
+  </div>
+
+  <button class="generate-btn" onclick="generateProposal()">Generate Proposal →</button>
+
+  <div class="preview" id="preview">
+    <h2 id="p-yourBiz"></h2>
+    <div class="tagline">Local Marketing Proposal</div>
+    <hr>
+    <div class="section-head">Prepared For</div>
+    <p id="p-client"></p>
+    <hr>
+    <div class="section-head">The Challenge</div>
+    <p id="p-problem"></p>
+    <div class="section-head">Our Approach</div>
+    <p id="p-solution"></p>
+    <div class="section-head">Expected Outcome</div>
+    <p id="p-result"></p>
+    <hr>
+    <div class="section-head">Investment Options</div>
+    <div class="pkg-cards">
+      <div class="pkg-card"><h3 id="p-pkg1name"></h3><div class="price" id="p-pkg1price"></div><p id="p-pkg1desc"></p></div>
+      <div class="pkg-card middle"><h3 id="p-pkg2name"></h3><div class="price" id="p-pkg2price"></div><p id="p-pkg2desc"></p><p style="color:#1a56db;font-size:0.75rem;font-weight:700;margin-top:8px;">⭐ Most Popular</p></div>
+      <div class="pkg-card"><h3 id="p-pkg3name"></h3><div class="price" id="p-pkg3price"></div><p id="p-pkg3desc"></p></div>
+    </div>
+    <hr>
+    <div class="section-head">Next Steps</div>
+    <p id="p-nextsteps"></p>
+    <hr>
+    <p style="font-size:0.8rem;color:#94a3b8;text-align:center;" id="p-footer"></p>
+  </div>
+
+  <div id="copy-area" style="display:none;">
+    <button class="copy-btn" onclick="copyProposal(this)">Copy Proposal Text</button>
+    <a href="/members" style="color:#94a3b8;font-size:0.85rem;font-weight:600;">← Back to Member Area</a>
+  </div>
+</div>
+
+<footer>&copy; 2026 Get 10 Clients &middot; All Rights Reserved</footer>
+
+<script>
+function generateProposal() {
+  const get = id => document.getElementById(id).value.trim();
+  const yourName = get('yourName') || 'Your Name';
+  const yourBiz = get('yourBiz') || 'Your Business';
+  const clientBiz = get('clientBiz') || 'Client Business';
+  const clientName = get('clientName') || 'Business Owner';
+  const startDate = get('startDate') ? new Date(get('startDate')).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}) : '[Proposed Start Date]';
+
+  document.getElementById('p-yourBiz').textContent = yourBiz;
+  document.getElementById('p-client').textContent = `${clientName} — ${clientBiz}`;
+  document.getElementById('p-problem').textContent = get('problem') || '[Describe the main challenge from your discovery call]';
+  document.getElementById('p-solution').textContent = get('solution') || '[Describe what you will do for them]';
+  document.getElementById('p-result').textContent = get('result') || '[Expected outcome]';
+  ['1','2','3'].forEach(n => {
+    document.getElementById('p-pkg'+n+'name').textContent = get('pkg'+n+'name');
+    document.getElementById('p-pkg'+n+'price').textContent = get('pkg'+n+'price');
+    document.getElementById('p-pkg'+n+'desc').textContent = get('pkg'+n+'desc');
+  });
+  document.getElementById('p-nextsteps').textContent = `Simply reply to this proposal with your preferred package and I will send over the agreement and get started on ${startDate}. Questions? Reply to this email or call me directly.`;
+  document.getElementById('p-footer').textContent = `Prepared by ${yourName} · ${yourBiz} · Valid for 7 days`;
+
+  document.getElementById('preview').style.display = 'block';
+  document.getElementById('copy-area').style.display = 'block';
+  document.getElementById('preview').scrollIntoView({behavior:'smooth'});
+}
+
+function copyProposal(btn) {
+  const text = document.getElementById('preview').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy Proposal Text'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>

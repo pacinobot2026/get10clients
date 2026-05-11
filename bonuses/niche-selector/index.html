@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local Business Niche Selector — Get 10 Clients</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}html,body{background:#0a1628;}
+body{font-family:'DM Sans',sans-serif;color:#fff;line-height:1.6;}a{text-decoration:none;color:inherit;}
+nav{background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(26,86,219,0.3);padding:16px 24px;position:sticky;top:0;z-index:100;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.logo-mark{display:flex;align-items:center;gap:12px;}.logo-icon{background:linear-gradient(135deg,#1a56db,#3b82f6);color:#fff;font-size:1.1rem;font-weight:900;width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;}
+.logo-text{display:flex;flex-direction:column;}.logo-top{font-size:0.95rem;font-weight:900;color:#fff;}.logo-bottom{font-size:0.65rem;font-weight:600;color:#60a5fa;letter-spacing:0.06em;text-transform:uppercase;}
+.nav-links{display:flex;gap:20px;font-size:0.85rem;font-weight:600;color:#94a3b8;}.nav-links a:hover{color:#fff;}
+.content{max-width:960px;margin:0 auto;padding:52px 24px;}
+.bonus-badge{display:inline-block;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);color:#fde68a;padding:6px 16px;border-radius:100px;font-size:0.8rem;font-weight:700;margin-bottom:16px;}
+h1{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:900;margin-bottom:12px;}
+.sub{color:#94a3b8;margin-bottom:40px;}
+.niches-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-bottom:52px;}
+.niche-card{background:#111d35;border:2px solid rgba(26,86,219,0.22);border-radius:13px;padding:26px;cursor:pointer;transition:all 0.2s;position:relative;}
+.niche-card:hover{border-color:#1a56db;transform:translateY(-2px);}
+.niche-card.selected{border-color:#1a56db;background:rgba(26,86,219,0.1);}
+.niche-icon{font-size:2rem;margin-bottom:12px;}
+.niche-card h3{font-size:1rem;font-weight:800;margin-bottom:8px;}
+.score-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.score-pill{padding:3px 10px;border-radius:100px;font-size:0.72rem;font-weight:700;}
+.score-hot{background:rgba(134,239,172,0.15);color:#86efac;}
+.score-warm{background:rgba(251,191,36,0.15);color:#fbbf24;}
+.score-budget{background:rgba(96,165,250,0.15);color:#60a5fa;}
+.niche-card p{color:#94a3b8;font-size:0.85rem;margin-top:10px;}
+.checkmark{position:absolute;top:14px;right:14px;background:linear-gradient(135deg,#1a56db,#3b82f6);color:#fff;width:24px;height:24px;border-radius:50%;display:none;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;}
+.niche-card.selected .checkmark{display:flex;}
+.result{background:#111d35;border:1px solid rgba(134,239,172,0.25);border-radius:16px;padding:36px;display:none;margin-bottom:32px;}
+.result h2{font-size:1.4rem;font-weight:900;margin-bottom:6px;color:#86efac;}
+.result p{color:#94a3b8;margin-bottom:16px;}
+.tips-list{list-style:none;}
+.tips-list li{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.92rem;color:#cbd5e1;}
+.tips-list li:last-child{border-bottom:none;}
+.tips-list li::before{content:"→";color:#60a5fa;font-weight:800;flex-shrink:0;}
+.select-btn{background:linear-gradient(135deg,#1a56db,#3b82f6);color:#fff;padding:12px 28px;border-radius:9px;font-weight:800;font-size:0.95rem;border:none;cursor:pointer;margin-top:20px;}
+footer{background:#060e1c;text-align:center;padding:24px;color:#64748b;font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.05);}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="/" class="logo-mark"><div class="logo-icon">10</div><div class="logo-text"><span class="logo-top">GET 10 CLIENTS</span><span class="logo-bottom">30-Day Local Business Challenge</span></div></a>
+  <div class="nav-links"><a href="/members">Home</a><a href="/members#modules">Modules</a><a href="/members#bonuses">Bonuses</a><a href="mailto:support@get10clients.com">Support</a></div>
+</div></nav>
+
+<div class="content">
+  <div class="bonus-badge">🎯 Bonus — Niche Selector Scorecard</div>
+  <h1>Which Local Business Niche Is Right for You?</h1>
+  <p class="sub">Click on the niches that interest you. We'll show you the best opportunity based on budget potential, competition level, and ease of getting started.</p>
+
+  <div class="niches-grid">
+    <div class="niche-card" onclick="select(this,'restaurants')"><div class="checkmark">✓</div><div class="niche-icon">🍽️</div><h3>Restaurants & Cafes</h3><div class="score-row"><span class="score-pill score-hot">High Volume</span><span class="score-pill score-warm">Medium Budget</span></div><p>Tons of prospects, fast decisions, great for social media and review management.</p></div>
+    <div class="niche-card" onclick="select(this,'salons')"><div class="checkmark">✓</div><div class="niche-icon">💇</div><h3>Hair Salons & Spas</h3><div class="score-row"><span class="score-pill score-hot">Easy to Close</span><span class="score-pill score-budget">$500-800/mo</span></div><p>Owner-operated, budget conscious but results-driven. Social media is their lifeline.</p></div>
+    <div class="niche-card" onclick="select(this,'dental')"><div class="checkmark">✓</div><div class="niche-icon">🦷</div><h3>Dentists & Med Spas</h3><div class="score-row"><span class="score-pill score-hot">Top Budget</span><span class="score-pill score-budget">$1K-3K/mo</span></div><p>High LTV per patient. Happy to spend on marketing if you can show ROI.</p></div>
+    <div class="niche-card" onclick="select(this,'gyms')"><div class="checkmark">✓</div><div class="niche-icon">💪</div><h3>Gyms & Fitness Studios</h3><div class="score-row"><span class="score-pill score-warm">Medium Budget</span><span class="score-pill score-hot">Referral-Friendly</span></div><p>Membership model = recurring revenue. Strong community angle for content.</p></div>
+    <div class="niche-card" onclick="select(this,'contractors')"><div class="checkmark">✓</div><div class="niche-icon">🔨</div><h3>Contractors & Trades</h3><div class="score-row"><span class="score-pill score-hot">Low Competition</span><span class="score-pill score-budget">$800-1.5K/mo</span></div><p>Terrible at marketing, high job values. Google + reviews = massive ROI for them.</p></div>
+    <div class="niche-card" onclick="select(this,'realestate')"><div class="checkmark">✓</div><div class="niche-icon">🏠</div><h3>Real Estate Agents</h3><div class="score-row"><span class="score-pill score-budget">High Budget</span><span class="score-pill score-warm">Competitive</span></div><p>Agents invest heavily in marketing. Great for listing videos, social, and ads.</p></div>
+    <div class="niche-card" onclick="select(this,'chiropractors')"><div class="checkmark">✓</div><div class="niche-icon">🦴</div><h3>Chiropractors & PT</h3><div class="score-row"><span class="score-pill score-hot">Underserved</span><span class="score-pill score-budget">$700-1.2K/mo</span></div><p>Rarely have good marketing. Google reviews and local SEO = easy wins.</p></div>
+    <div class="niche-card" onclick="select(this,'retail')"><div class="checkmark">✓</div><div class="niche-icon">🛍️</div><h3>Boutiques & Retail</h3><div class="score-row"><span class="score-pill score-warm">Medium Budget</span><span class="score-pill score-hot">Visual Content</span></div><p>Instagram and Facebook are their playground. Great for product-focused marketing.</p></div>
+  </div>
+
+  <div class="result" id="result">
+    <h2 id="result-title"></h2>
+    <p id="result-desc"></p>
+    <ul class="tips-list" id="result-tips"></ul>
+    <button class="select-btn" onclick="window.location.href='/bonuses/prospect-tracker'">Start Building Your Prospect List →</button>
+  </div>
+</div>
+
+<footer>&copy; 2026 Get 10 Clients &middot; All Rights Reserved</footer>
+
+<script>
+const data = {
+  restaurants:{title:"Restaurants & Cafes — Great Starting Niche",desc:"High volume of prospects, fast decision-making, and social media is a natural fit. Start here if you want to build momentum quickly with a lot of options in your area.",tips:["Search Google Maps for 'restaurant [your city]' to build your list fast","Focus on places with less than 50 Google reviews — easy win","Offer to manage their Google Business Profile + Instagram for $400-600/month","Show them a competitor doing well on social to create urgency","Restaurants talk to each other — one happy client = multiple referrals"]},
+  salons:{title:"Hair Salons & Spas — Easy Entry, High Close Rate",desc:"Owner-operated salons are extremely receptive to local marketing help. They live and die by word-of-mouth and Instagram — and most have no strategy at all.",tips:["Find salons with poor Instagram presence or no Google reviews","Offer a free 'social media audit' as your opener","Start at $400/month: Google profile + 12 Instagram posts","Salons book by appointment — show them how to use Instagram stories for that","The owner often IS the brand — lean into their personal story for content"]},
+  dental:{title:"Dentists & Med Spas — Highest Budget Potential",desc:"Dental practices and med spas have the highest marketing budgets of any local business. One new patient can be worth $2,000-$10,000 in lifetime value to them.",tips:["Target practices that don't show up on Page 1 for '[service] [city]'","Lead with Google Ads + SEO — they understand ROI language","Don't go below $1,000/month — it signals low value","Offer a 'new patient acquisition' guarantee for confidence","Ask for a 6-month commitment upfront — they plan in billing cycles"]},
+  gyms:{title:"Gyms & Fitness Studios — Referral Goldmine",desc:"Gym owners are passionate about their community and desperate for member growth. The membership model means your results compound over time.",tips:["Focus on boutique studios (yoga, CrossFit, boxing) — more budget than big chains","Offer a 30-day 'new member challenge' campaign as your entry offer","Social content + Facebook/Instagram ads = perfect combo","Connect them to local events and community for organic growth","One gym with 200 members can refer you to 5 other local businesses"]},
+  contractors:{title:"Contractors & Trades — Underserved with High Job Values",desc:"Plumbers, HVAC techs, electricians, and roofers are terrible at marketing — and they know it. A single job can be worth $1,000-$10,000, so marketing ROI is obvious.",tips:["Google Business Profile optimization is #1 for this niche","Ask them: 'How many jobs do you get from Google?' — the answer is usually zero","Reviews are everything — offer a review generation system as your core service","Seasonal campaigns (AC in summer, heating in fall) are easy wins","Trades owners refer each other constantly — prioritize this network"]},
+  realestate:{title:"Real Estate Agents — High Budget, High Volume",desc:"Real estate agents are professional marketers who understand the value of leads. They invest heavily and switch providers often — making them high opportunity but more demanding.",tips:["Focus on agents closing 10+ deals/year — they have budget","Listing videos + social media is your entry offer","Run Facebook/Instagram ads targeting homeowners in specific zip codes","Monthly retainer + per-listing fee = predictable income for you","Build a referral relationship with a top agent = pipeline of their referrals"]},
+  chiropractors:{title:"Chiropractors & Physical Therapists — Hidden Gem",desc:"Most chiropractors are still relying on word-of-mouth from 1995. A simple Google profile + reviews strategy can double their new patient flow — making you look like a rockstar.",tips:["Search '[city] chiropractor' — most have terrible or no Google presence","Google reviews + local SEO is your core offer ($500-800/mo)","Before/after testimonial videos for Instagram perform extremely well","Offer a 90-day 'new patient guarantee' to reduce their risk","Happy patients refer to friends — help them set up a referral program"]},
+  retail:{title:"Boutiques & Retail Shops — Visual Content Kings",desc:"Local retail shops thrive on visual content and community connection. Instagram and Facebook are their natural habitat — and most are winging it.",tips:["Product photography tips + Instagram Reels = massive value","Offer to run their Instagram for $400-600/month as an entry offer","Local shopping events and promotions are great ad campaign angles","Partner with complementary businesses (salon + boutique = natural pair)","Email list building via in-store promotions = recurring value you can show"]}
+};
+
+let selected = null;
+function select(el, key) {
+  document.querySelectorAll('.niche-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selected = key;
+  const d = data[key];
+  document.getElementById('result-title').textContent = d.title;
+  document.getElementById('result-desc').textContent = d.desc;
+  document.getElementById('result-tips').innerHTML = d.tips.map(t => `<li>${t}</li>`).join('');
+  const r = document.getElementById('result');
+  r.style.display = 'block';
+  r.scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
