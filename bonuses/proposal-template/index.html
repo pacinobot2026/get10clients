@@ -26,6 +26,8 @@ input,textarea,select{width:100%;background:#0a1628;border:1px solid rgba(26,86,
 textarea{resize:vertical;min-height:80px;}
 .pkg-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px;}
 .generate-btn{background:linear-gradient(135deg,#1a56db,#3b82f6);color:#fff;padding:13px 28px;border-radius:9px;font-weight:800;font-size:0.95rem;border:none;cursor:pointer;margin-bottom:28px;}
+
+/* PREVIEW */
 .preview{background:#fff;color:#1a1a1a;border-radius:13px;padding:48px;margin-bottom:24px;display:none;}
 .preview h2{font-size:1.5rem;font-weight:900;margin-bottom:4px;color:#0a1628;}
 .preview .tagline{color:#1a56db;font-size:0.85rem;font-weight:700;margin-bottom:28px;}
@@ -38,10 +40,28 @@ textarea{resize:vertical;min-height:80px;}
 .pkg-card h3{font-size:0.85rem;font-weight:800;margin-bottom:4px;color:#0a1628;}
 .pkg-card .price{font-size:1.6rem;font-weight:900;color:#1a56db;margin:8px 0;}
 .pkg-card p{font-size:0.8rem;color:#64748b;}
-.copy-btn{background:#0a1628;color:#fff;padding:11px 24px;border-radius:8px;font-weight:700;font-size:0.88rem;border:none;cursor:pointer;margin-right:10px;}
-.copy-btn.copied{background:#1a56db;}
+
+/* ACTION BUTTONS */
+.action-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;}
+.action-btn{padding:11px 20px;border-radius:8px;font-weight:700;font-size:0.85rem;border:none;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:7px;}
+.btn-pdf{background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;}
+.btn-copy{background:rgba(26,86,219,0.15);border:1px solid rgba(26,86,219,0.3);color:#60a5fa;}
+.btn-copy:hover{background:rgba(26,86,219,0.3);}
+.btn-email{background:rgba(134,239,172,0.15);border:1px solid rgba(134,239,172,0.3);color:#86efac;}
+.btn-email:hover{background:rgba(134,239,172,0.25);}
+.btn-copied{background:rgba(134,239,172,0.15);border:1px solid rgba(134,239,172,0.3);color:#86efac;}
+
 footer{background:#060e1c;text-align:center;padding:24px;color:#64748b;font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.05);}
-@media(max-width:600px){.form-row,.pkg-row,.pkg-cards{grid-template-columns:1fr;}}
+
+@media(max-width:600px){.form-row,.pkg-row,.pkg-cards{grid-template-columns:1fr;}.action-bar{flex-direction:column;}}
+
+/* PRINT STYLES */
+@media print {
+  nav,.content > *:not(.preview),.action-bar{display:none!important;}
+  html,body{background:#fff!important;}
+  .preview{display:block!important;box-shadow:none;border-radius:0;padding:32px;margin:0;}
+  .pkg-cards{grid-template-columns:1fr 1fr 1fr;}
+}
 </style>
 </head>
 <body>
@@ -53,7 +73,7 @@ footer{background:#060e1c;text-align:center;padding:24px;color:#64748b;font-size
 <div class="content">
   <div class="bonus-badge">📋 Bonus — One-Page Proposal Template</div>
   <h1>Build Your Client Proposal</h1>
-  <p class="sub">Fill in the details below and generate a clean, professional one-page proposal ready to send.</p>
+  <p class="sub">Fill in the details below and generate a clean, professional one-page proposal ready to send, save as PDF, or email directly.</p>
 
   <div class="editor">
     <h2>Your Info</h2>
@@ -62,9 +82,14 @@ footer{background:#060e1c;text-align:center;padding:24px;color:#64748b;font-size
       <div class="form-group"><label>Your Business Name</label><input id="yourBiz" placeholder="e.g. Smith Marketing Co."></div>
     </div>
     <div class="form-row">
+      <div class="form-group"><label>Your Email</label><input id="yourEmail" placeholder="e.g. john@smithmarketing.com" type="email"></div>
+      <div class="form-group"><label>Your Phone</label><input id="yourPhone" placeholder="e.g. (702) 555-0100"></div>
+    </div>
+    <div class="form-row">
       <div class="form-group"><label>Client Business Name</label><input id="clientBiz" placeholder="e.g. Sunrise Cafe"></div>
       <div class="form-group"><label>Client Owner Name</label><input id="clientName" placeholder="e.g. Maria Lopez"></div>
     </div>
+    <div class="form-group"><label>Client Email (for mailto link)</label><input id="clientEmail" placeholder="e.g. maria@sunrisecafe.com" type="email"></div>
     <div class="form-group"><label>Their Main Problem (from discovery call)</label><textarea id="problem" placeholder="e.g. Maria mentioned she's getting very few new customers from online search and her Google profile hasn't been updated in over a year..."></textarea></div>
     <div class="form-group"><label>Your Solution (what you'll do for them)</label><textarea id="solution" placeholder="e.g. Set up and optimize their Google Business Profile, create a monthly social media content calendar, and run a targeted local Facebook ad campaign..."></textarea></div>
     <div class="form-group"><label>Expected Result / Outcome</label><input id="result" placeholder="e.g. 20-30% increase in new customer inquiries within 60 days"></div>
@@ -75,19 +100,19 @@ footer{background:#060e1c;text-align:center;padding:24px;color:#64748b;font-size
     <h2>Pricing Packages</h2>
     <div class="pkg-row">
       <div>
-        <div class="form-group"><label>Package 1 Name</label><input id="pkg1name" placeholder="e.g. Starter" value="Starter"></div>
-        <div class="form-group"><label>Package 1 Price/Month</label><input id="pkg1price" placeholder="e.g. $497" value="$497/mo"></div>
-        <div class="form-group"><label>Package 1 Description</label><input id="pkg1desc" placeholder="e.g. Google profile + 8 social posts/mo" value="Google profile + 8 social posts/mo"></div>
+        <div class="form-group"><label>Package 1 Name</label><input id="pkg1name" value="Starter"></div>
+        <div class="form-group"><label>Package 1 Price</label><input id="pkg1price" value="$497/mo"></div>
+        <div class="form-group"><label>Package 1 Description</label><input id="pkg1desc" value="Google profile + 8 social posts/mo"></div>
       </div>
       <div>
-        <div class="form-group"><label>Package 2 Name (Recommended)</label><input id="pkg2name" placeholder="e.g. Growth" value="Growth"></div>
-        <div class="form-group"><label>Package 2 Price/Month</label><input id="pkg2price" placeholder="e.g. $797" value="$797/mo"></div>
-        <div class="form-group"><label>Package 2 Description</label><input id="pkg2desc" placeholder="e.g. Everything + Facebook Ads" value="Everything in Starter + Facebook Ads ($300 ad budget included)"></div>
+        <div class="form-group"><label>Package 2 Name (Recommended)</label><input id="pkg2name" value="Growth"></div>
+        <div class="form-group"><label>Package 2 Price</label><input id="pkg2price" value="$797/mo"></div>
+        <div class="form-group"><label>Package 2 Description</label><input id="pkg2desc" value="Everything in Starter + Facebook Ads ($300 ad budget included)"></div>
       </div>
       <div>
-        <div class="form-group"><label>Package 3 Name</label><input id="pkg3name" placeholder="e.g. Premium" value="Premium"></div>
-        <div class="form-group"><label>Package 3 Price/Month</label><input id="pkg3price" placeholder="e.g. $1,197" value="$1,197/mo"></div>
-        <div class="form-group"><label>Package 3 Description</label><input id="pkg3desc" placeholder="e.g. Full done-for-you service" value="Full done-for-you — ads, content, email + monthly strategy call"></div>
+        <div class="form-group"><label>Package 3 Name</label><input id="pkg3name" value="Premium"></div>
+        <div class="form-group"><label>Package 3 Price</label><input id="pkg3price" value="$1,197/mo"></div>
+        <div class="form-group"><label>Package 3 Description</label><input id="pkg3desc" value="Full done-for-you — ads, content, email + monthly strategy call"></div>
       </div>
     </div>
   </div>
@@ -121,48 +146,111 @@ footer{background:#060e1c;text-align:center;padding:24px;color:#64748b;font-size
     <p style="font-size:0.8rem;color:#94a3b8;text-align:center;" id="p-footer"></p>
   </div>
 
-  <div id="copy-area" style="display:none;">
-    <button class="copy-btn" onclick="copyProposal(this)">Copy Proposal Text</button>
-    <a href="/members" style="color:#94a3b8;font-size:0.85rem;font-weight:600;">← Back to Member Area</a>
+  <div class="action-bar" id="action-bar" style="display:none;">
+    <button class="action-btn btn-pdf" onclick="savePDF()">🖨️ Save as PDF</button>
+    <button class="action-btn btn-copy" id="copyBtn" onclick="copyProposal()">📋 Copy as Text</button>
+    <button class="action-btn btn-email" id="emailBtn" onclick="emailProposal()">📧 Open in Email</button>
   </div>
 </div>
 
 <footer>&copy; 2026 Get 10 Clients &middot; All Rights Reserved</footer>
 
 <script>
-function generateProposal() {
-  const get = id => document.getElementById(id).value.trim();
-  const yourName = get('yourName') || 'Your Name';
-  const yourBiz = get('yourBiz') || 'Your Business';
-  const clientBiz = get('clientBiz') || 'Client Business';
-  const clientName = get('clientName') || 'Business Owner';
-  const startDate = get('startDate') ? new Date(get('startDate')).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}) : '[Proposed Start Date]';
+let proposalData = {};
 
-  document.getElementById('p-yourBiz').textContent = yourBiz;
-  document.getElementById('p-client').textContent = `${clientName} — ${clientBiz}`;
-  document.getElementById('p-problem').textContent = get('problem') || '[Describe the main challenge from your discovery call]';
-  document.getElementById('p-solution').textContent = get('solution') || '[Describe what you will do for them]';
-  document.getElementById('p-result').textContent = get('result') || '[Expected outcome]';
+function get(id){ return document.getElementById(id).value.trim(); }
+
+function generateProposal() {
+  proposalData = {
+    yourName: get('yourName')||'Your Name',
+    yourBiz: get('yourBiz')||'Your Business',
+    yourEmail: get('yourEmail'),
+    yourPhone: get('yourPhone'),
+    clientBiz: get('clientBiz')||'Client Business',
+    clientName: get('clientName')||'Business Owner',
+    clientEmail: get('clientEmail'),
+    problem: get('problem')||'[Describe the main challenge from your discovery call]',
+    solution: get('solution')||'[Describe what you will do for them]',
+    result: get('result')||'[Expected outcome]',
+    startDate: get('startDate') ? new Date(get('startDate')).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}) : '[Proposed Start Date]',
+    pkg1name: get('pkg1name'), pkg1price: get('pkg1price'), pkg1desc: get('pkg1desc'),
+    pkg2name: get('pkg2name'), pkg2price: get('pkg2price'), pkg2desc: get('pkg2desc'),
+    pkg3name: get('pkg3name'), pkg3price: get('pkg3price'), pkg3desc: get('pkg3desc'),
+  };
+
+  document.getElementById('p-yourBiz').textContent = proposalData.yourBiz;
+  document.getElementById('p-client').textContent = `${proposalData.clientName} — ${proposalData.clientBiz}`;
+  document.getElementById('p-problem').textContent = proposalData.problem;
+  document.getElementById('p-solution').textContent = proposalData.solution;
+  document.getElementById('p-result').textContent = proposalData.result;
   ['1','2','3'].forEach(n => {
-    document.getElementById('p-pkg'+n+'name').textContent = get('pkg'+n+'name');
-    document.getElementById('p-pkg'+n+'price').textContent = get('pkg'+n+'price');
-    document.getElementById('p-pkg'+n+'desc').textContent = get('pkg'+n+'desc');
+    document.getElementById('p-pkg'+n+'name').textContent = proposalData['pkg'+n+'name'];
+    document.getElementById('p-pkg'+n+'price').textContent = proposalData['pkg'+n+'price'];
+    document.getElementById('p-pkg'+n+'desc').textContent = proposalData['pkg'+n+'desc'];
   });
-  document.getElementById('p-nextsteps').textContent = `Simply reply to this proposal with your preferred package and I will send over the agreement and get started on ${startDate}. Questions? Reply to this email or call me directly.`;
-  document.getElementById('p-footer').textContent = `Prepared by ${yourName} · ${yourBiz} · Valid for 7 days`;
+  document.getElementById('p-nextsteps').textContent = `Simply reply to this proposal with your preferred package and I will send over the agreement and get started on ${proposalData.startDate}. Questions? Reply to this email or call me directly.`;
+  
+  const contact = [proposalData.yourEmail, proposalData.yourPhone].filter(Boolean).join(' · ');
+  document.getElementById('p-footer').textContent = `Prepared by ${proposalData.yourName} · ${proposalData.yourBiz}${contact ? ' · ' + contact : ''} · Valid for 7 days`;
 
   document.getElementById('preview').style.display = 'block';
-  document.getElementById('copy-area').style.display = 'block';
+  document.getElementById('action-bar').style.display = 'flex';
   document.getElementById('preview').scrollIntoView({behavior:'smooth'});
 }
 
-function copyProposal(btn) {
+function savePDF() {
+  window.print();
+}
+
+function copyProposal() {
   const text = document.getElementById('preview').innerText;
   navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyBtn');
     btn.textContent = '✓ Copied!';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'Copy Proposal Text'; btn.classList.remove('copied'); }, 2000);
+    btn.classList.add('btn-copied');
+    setTimeout(() => { btn.textContent = '📋 Copy as Text'; btn.classList.remove('btn-copied'); }, 2000);
   });
+}
+
+function emailProposal() {
+  const d = proposalData;
+  const subject = encodeURIComponent(`Marketing Proposal for ${d.clientBiz}`);
+  const body = encodeURIComponent(
+`Hi ${d.clientName},
+
+It was great speaking with you. As promised, here is my proposal for ${d.clientBiz}.
+
+THE CHALLENGE
+${d.problem}
+
+OUR APPROACH
+${d.solution}
+
+EXPECTED OUTCOME
+${d.result}
+
+INVESTMENT OPTIONS
+
+Option 1 — ${d.pkg1name}: ${d.pkg1price}
+${d.pkg1desc}
+
+Option 2 — ${d.pkg2name} (Most Popular): ${d.pkg2price}
+${d.pkg2desc}
+
+Option 3 — ${d.pkg3name}: ${d.pkg3price}
+${d.pkg3desc}
+
+NEXT STEPS
+Simply reply to this email with your preferred package and I will send over the agreement and get us started on ${d.startDate}.
+
+Questions? Just reply or call me directly.
+
+${d.yourName}
+${d.yourBiz}
+${d.yourEmail ? d.yourEmail + '\n' : ''}${d.yourPhone || ''}`
+  );
+  const mailto = `mailto:${d.clientEmail||''}?subject=${subject}&body=${body}`;
+  window.location.href = mailto;
 }
 </script>
 </body>

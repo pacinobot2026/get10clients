@@ -24,24 +24,31 @@ h1{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:900;margin-bottom:12px;}
 .controls{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;align-items:center;}
 .add-btn{background:linear-gradient(135deg,#1a56db,#3b82f6);color:#fff;padding:10px 20px;border-radius:8px;font-weight:700;font-size:0.88rem;border:none;cursor:pointer;}
 .filter-select{background:#111d35;border:1px solid rgba(26,86,219,0.25);color:#fff;padding:10px 14px;border-radius:8px;font-size:0.85rem;font-family:'DM Sans',sans-serif;}
-.table-wrap{background:#111d35;border:1px solid rgba(26,86,219,0.22);border-radius:13px;overflow:hidden;margin-bottom:40px;}
-table{width:100%;border-collapse:collapse;}
+.table-wrap{background:#111d35;border:1px solid rgba(26,86,219,0.22);border-radius:13px;overflow:hidden;margin-bottom:40px;overflow-x:auto;}
+table{width:100%;border-collapse:collapse;min-width:700px;}
 th{padding:14px 16px;text-align:left;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#64748b;border-bottom:1px solid rgba(255,255,255,0.07);}
-td{padding:13px 16px;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.88rem;}
+td{padding:13px 16px;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.88rem;vertical-align:middle;}
 tr:last-child td{border-bottom:none;}
-tr:hover td{background:rgba(26,86,219,0.05);}
-.status{padding:4px 10px;border-radius:100px;font-size:0.75rem;font-weight:700;}
+tr.data-row{cursor:pointer;}
+tr.data-row:hover td{background:rgba(26,86,219,0.07);}
+.status{padding:4px 10px;border-radius:100px;font-size:0.75rem;font-weight:700;white-space:nowrap;}
 .status.new{background:rgba(96,165,250,0.15);color:#60a5fa;}
 .status.contacted{background:rgba(251,191,36,0.15);color:#fbbf24;}
 .status.call{background:rgba(167,139,250,0.15);color:#a78bfa;}
 .status.proposal{background:rgba(249,115,22,0.15);color:#fb923c;}
 .status.closed{background:rgba(134,239,172,0.15);color:#86efac;}
 .status.lost{background:rgba(239,68,68,0.15);color:#f87171;}
-.del-btn{background:none;border:none;color:#64748b;cursor:pointer;font-size:0.85rem;padding:4px 8px;border-radius:5px;}
+.quick-status{background:#0a1628;border:1px solid rgba(26,86,219,0.2);color:#94a3b8;padding:5px 8px;border-radius:6px;font-size:0.78rem;font-family:'DM Sans',sans-serif;cursor:pointer;}
+.edit-btn{background:rgba(26,86,219,0.12);border:1px solid rgba(26,86,219,0.25);color:#60a5fa;cursor:pointer;font-size:0.78rem;padding:5px 10px;border-radius:6px;font-family:'DM Sans',sans-serif;margin-right:4px;}
+.edit-btn:hover{background:rgba(26,86,219,0.25);}
+.del-btn{background:none;border:none;color:#64748b;cursor:pointer;font-size:0.8rem;padding:5px 8px;border-radius:5px;}
 .del-btn:hover{color:#f87171;background:rgba(239,68,68,0.1);}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;align-items:center;justify-content:center;}
+.notes-cell{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#94a3b8;cursor:help;}
+
+/* MODAL */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;align-items:center;justify-content:center;padding:24px;}
 .modal.open{display:flex;}
-.modal-box{background:#111d35;border:1px solid rgba(26,86,219,0.3);border-radius:16px;padding:36px;width:100%;max-width:500px;margin:24px;}
+.modal-box{background:#111d35;border:1px solid rgba(26,86,219,0.3);border-radius:16px;padding:36px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;}
 .modal-box h2{font-size:1.2rem;font-weight:800;margin-bottom:24px;}
 .form-group{margin-bottom:16px;}
 label{display:block;font-size:0.82rem;font-weight:700;color:#94a3b8;margin-bottom:6px;}
@@ -50,6 +57,9 @@ textarea{resize:vertical;min-height:80px;}
 .form-btns{display:flex;gap:12px;margin-top:20px;}
 .save-btn{background:linear-gradient(135deg,#1a56db,#3b82f6);color:#fff;padding:11px 24px;border-radius:8px;font-weight:700;font-size:0.9rem;border:none;cursor:pointer;flex:1;}
 .cancel-btn{background:#0a1628;border:1px solid rgba(255,255,255,0.1);color:#94a3b8;padding:11px 24px;border-radius:8px;font-weight:700;font-size:0.9rem;cursor:pointer;}
+.modal-title-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;}
+.modal-title-row h2{margin-bottom:0;}
+
 footer{background:#060e1c;text-align:center;padding:24px;color:#64748b;font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.05);}
 </style>
 </head>
@@ -62,13 +72,14 @@ footer{background:#060e1c;text-align:center;padding:24px;color:#64748b;font-size
 <div class="content">
   <div class="bonus-badge">🗂️ Bonus — Local Prospect Tracker</div>
   <h1>Your Prospect Pipeline</h1>
-  <p class="sub">Track every prospect, conversation, and proposal in one place. Your path to 10 clients starts here.</p>
+  <p class="sub">Track every prospect, conversation, and proposal. Click any row to edit. All data saves automatically to your browser.</p>
 
   <div class="stats">
     <div class="stat"><div class="stat-num" id="totalCount">0</div><div class="stat-label">Total Prospects</div></div>
     <div class="stat"><div class="stat-num" id="contactedCount">0</div><div class="stat-label">Contacted</div></div>
     <div class="stat"><div class="stat-num" id="callCount">0</div><div class="stat-label">Discovery Calls</div></div>
-    <div class="stat"><div class="stat-num" id="closedCount">0</div><div class="stat-label">Clients Won</div></div>
+    <div class="stat"><div class="stat-num" id="proposalCount">0</div><div class="stat-label">Proposals Sent</div></div>
+    <div class="stat"><div class="stat-num" id="closedCount">0</div><div class="stat-label">Clients Won 🎉</div></div>
   </div>
 
   <div class="controls">
@@ -86,15 +97,20 @@ footer{background:#060e1c;text-align:center;padding:24px;color:#64748b;font-size
 
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Business</th><th>Owner</th><th>Industry</th><th>Contact</th><th>Status</th><th>Notes</th><th></th></tr></thead>
+      <thead><tr><th>Business</th><th>Owner</th><th>Industry</th><th>Contact</th><th>Status</th><th>Notes</th><th>Actions</th></tr></thead>
       <tbody id="tableBody"></tbody>
     </table>
   </div>
 </div>
 
+<!-- ADD / EDIT MODAL -->
 <div class="modal" id="modal">
   <div class="modal-box">
-    <h2>Add Prospect</h2>
+    <div class="modal-title-row">
+      <h2 id="modalTitle">Add Prospect</h2>
+      <button class="del-btn" onclick="closeModal()" style="font-size:1.2rem;">✕</button>
+    </div>
+    <input type="hidden" id="editIndex" value="-1">
     <div class="form-group"><label>Business Name *</label><input id="f-biz" placeholder="e.g. Sunrise Cafe"></div>
     <div class="form-group"><label>Owner / Contact Name</label><input id="f-owner" placeholder="e.g. Maria Lopez"></div>
     <div class="form-group"><label>Industry</label><input id="f-industry" placeholder="e.g. Restaurant, Salon, Gym"></div>
@@ -120,6 +136,7 @@ footer{background:#060e1c;text-align:center;padding:24px;color:#64748b;font-size
 <footer>&copy; 2026 Get 10 Clients &middot; All Rights Reserved</footer>
 
 <script>
+const statusLabels = {new:'New',contacted:'Contacted',call:'Discovery Call',proposal:'Proposal Sent',closed:'Client Won',lost:'Not Interested'};
 let prospects = JSON.parse(localStorage.getItem('g10c_prospects') || '[]');
 
 function save() { localStorage.setItem('g10c_prospects', JSON.stringify(prospects)); }
@@ -128,38 +145,100 @@ function renderTable() {
   const filter = document.getElementById('filterStatus').value;
   const filtered = filter ? prospects.filter(p => p.status === filter) : prospects;
   const tbody = document.getElementById('tableBody');
-  const statusLabels = {new:'New',contacted:'Contacted',call:'Discovery Call',proposal:'Proposal Sent',closed:'Client Won',lost:'Not Interested'};
-  tbody.innerHTML = filtered.length === 0
-    ? '<tr><td colspan="7" style="text-align:center;color:#64748b;padding:40px;">No prospects yet. Click "+ Add Prospect" to get started.</td></tr>'
-    : filtered.map((p,i) => `<tr>
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#64748b;padding:40px;">No prospects yet. Click "+ Add Prospect" to get started.</td></tr>';
+  } else {
+    tbody.innerHTML = filtered.map(p => {
+      const realIdx = prospects.indexOf(p);
+      const opts = Object.entries(statusLabels).map(([v,l]) => `<option value="${v}"${p.status===v?' selected':''}>${l}</option>`).join('');
+      return `<tr class="data-row">
         <td style="font-weight:700;">${p.biz}</td>
         <td>${p.owner||'—'}</td>
         <td>${p.industry||'—'}</td>
         <td>${p.contact||'—'}</td>
-        <td><span class="status ${p.status}">${statusLabels[p.status]||p.status}</span></td>
-        <td style="color:#94a3b8;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${p.notes||'—'}</td>
-        <td><button class="del-btn" onclick="deleteProspect(${prospects.indexOf(p)})">✕</button></td>
-      </tr>`).join('');
-  
+        <td>
+          <select class="quick-status" onchange="quickStatus(${realIdx},this.value)" onclick="event.stopPropagation()">
+            ${opts}
+          </select>
+        </td>
+        <td class="notes-cell" title="${(p.notes||'').replace(/"/g,'&quot;')}">${p.notes||'—'}</td>
+        <td style="white-space:nowrap;">
+          <button class="edit-btn" onclick="event.stopPropagation();editProspect(${realIdx})">Edit</button>
+          <button class="del-btn" onclick="event.stopPropagation();deleteProspect(${realIdx})">✕</button>
+        </td>
+      </tr>`;
+    }).join('');
+  }
+
   document.getElementById('totalCount').textContent = prospects.length;
-  document.getElementById('contactedCount').textContent = prospects.filter(p=>p.status==='contacted'||p.status==='call'||p.status==='proposal'||p.status==='closed').length;
+  document.getElementById('contactedCount').textContent = prospects.filter(p=>['contacted','call','proposal','closed'].includes(p.status)).length;
   document.getElementById('callCount').textContent = prospects.filter(p=>p.status==='call').length;
+  document.getElementById('proposalCount').textContent = prospects.filter(p=>p.status==='proposal').length;
   document.getElementById('closedCount').textContent = prospects.filter(p=>p.status==='closed').length;
 }
 
-function openModal() { document.getElementById('modal').classList.add('open'); }
-function closeModal() { document.getElementById('modal').classList.remove('open'); ['f-biz','f-owner','f-industry','f-contact','f-notes'].forEach(id=>document.getElementById(id).value=''); document.getElementById('f-status').value='new'; }
+function quickStatus(idx, val) {
+  prospects[idx].status = val;
+  save();
+  renderTable();
+}
+
+function openModal(editIdx = -1) {
+  document.getElementById('editIndex').value = editIdx;
+  if (editIdx >= 0) {
+    const p = prospects[editIdx];
+    document.getElementById('modalTitle').textContent = 'Edit Prospect';
+    document.getElementById('f-biz').value = p.biz;
+    document.getElementById('f-owner').value = p.owner||'';
+    document.getElementById('f-industry').value = p.industry||'';
+    document.getElementById('f-contact').value = p.contact||'';
+    document.getElementById('f-status').value = p.status;
+    document.getElementById('f-notes').value = p.notes||'';
+  } else {
+    document.getElementById('modalTitle').textContent = 'Add Prospect';
+    ['f-biz','f-owner','f-industry','f-contact','f-notes'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('f-status').value = 'new';
+  }
+  document.getElementById('modal').classList.add('open');
+}
+
+function editProspect(idx) { openModal(idx); }
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
 
 function saveProspect() {
   const biz = document.getElementById('f-biz').value.trim();
   if (!biz) { alert('Business name is required.'); return; }
-  prospects.push({ biz, owner: document.getElementById('f-owner').value.trim(), industry: document.getElementById('f-industry').value.trim(), contact: document.getElementById('f-contact').value.trim(), status: document.getElementById('f-status').value, notes: document.getElementById('f-notes').value.trim() });
-  save(); renderTable(); closeModal();
+  const data = {
+    biz,
+    owner: document.getElementById('f-owner').value.trim(),
+    industry: document.getElementById('f-industry').value.trim(),
+    contact: document.getElementById('f-contact').value.trim(),
+    status: document.getElementById('f-status').value,
+    notes: document.getElementById('f-notes').value.trim()
+  };
+  const editIdx = parseInt(document.getElementById('editIndex').value);
+  if (editIdx >= 0) {
+    prospects[editIdx] = data;
+  } else {
+    prospects.push(data);
+  }
+  save();
+  renderTable();
+  closeModal();
 }
 
 function deleteProspect(i) {
   if (confirm('Remove this prospect?')) { prospects.splice(i,1); save(); renderTable(); }
 }
+
+// Close modal on backdrop click
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
 
 renderTable();
 </script>
