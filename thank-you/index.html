@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome! — Get 10 Clients</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#0a1628;}
+body{font-family:'DM Sans',sans-serif;background:#0a1628;color:#fff;line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+nav{background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(26,86,219,0.3);padding:16px 24px;position:sticky;top:0;z-index:100;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.logo-mark{display:flex;align-items:center;gap:12px;}
+.logo-icon{background:linear-gradient(135deg,#1a56db,#3b82f6);color:#fff;font-size:1.1rem;font-weight:900;width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;}
+.logo-text{display:flex;flex-direction:column;}
+.logo-top{font-size:0.95rem;font-weight:900;color:#fff;}
+.logo-bottom{font-size:0.65rem;font-weight:600;color:#60a5fa;letter-spacing:0.06em;text-transform:uppercase;}
+.nav-links{display:flex;gap:24px;font-size:0.88rem;font-weight:600;color:#94a3b8;}
+.nav-links a:hover{color:#fff;}
+.hero{text-align:center;padding:60px 24px 40px;}
+.badge{display:inline-block;background:rgba(134,239,172,0.15);border:1px solid rgba(134,239,172,0.3);color:#86efac;padding:8px 20px;border-radius:100px;font-size:0.85rem;font-weight:700;margin-bottom:24px;}
+h1{font-size:clamp(2rem,4vw,3rem);font-weight:900;margin-bottom:16px;}
+h1 span{color:#60a5fa;}
+.sub{color:#94a3b8;font-size:1.05rem;max-width:580px;margin:0 auto 40px;}
+.steps{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:48px;}
+.step{background:#111d35;border:1px solid rgba(26,86,219,0.25);border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:10px;font-size:0.88rem;font-weight:600;}
+.step-num{background:linear-gradient(135deg,#1a56db,#3b82f6);color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:900;flex-shrink:0;}
+.video-wrap{background:#111d35;border:1px solid rgba(26,86,219,0.3);border-radius:16px;aspect-ratio:16/9;max-width:740px;margin:0 auto 60px;display:flex;align-items:center;justify-content:center;}
+.video-placeholder{color:#94a3b8;}
+.section{padding:48px 24px;max-width:1100px;margin:0 auto;}
+.section-label{color:#60a5fa;font-weight:700;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.section-title{font-size:1.8rem;font-weight:900;margin-bottom:28px;}
+.section-title span{color:#60a5fa;}
+.modules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
+.module-card{background:#111d35;border:1px solid rgba(26,86,219,0.22);border-radius:13px;padding:24px;transition:border-color 0.2s;}
+.module-card:hover{border-color:#1a56db;}
+.module-num{background:rgba(26,86,219,0.15);color:#60a5fa;font-weight:800;font-size:0.75rem;padding:3px 10px;border-radius:100px;display:inline-block;margin-bottom:10px;}
+.module-card h3{font-size:1rem;font-weight:700;margin-bottom:6px;}
+.module-card p{color:#94a3b8;font-size:0.85rem;margin-bottom:14px;}
+.module-btn{display:inline-block;background:rgba(26,86,219,0.15);border:1px solid rgba(26,86,219,0.3);color:#60a5fa;padding:8px 16px;border-radius:8px;font-size:0.82rem;font-weight:700;}
+.bonus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+.bonus-card{background:#111d35;border:1px solid rgba(245,158,11,0.2);border-radius:12px;padding:22px;border-left:4px solid #f59e0b;}
+.bonus-card h3{font-size:0.95rem;font-weight:700;margin-bottom:6px;color:#fde68a;}
+.bonus-card p{color:#94a3b8;font-size:0.83rem;margin-bottom:12px;}
+.bonus-btn{display:inline-block;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);color:#fde68a;padding:7px 14px;border-radius:7px;font-size:0.8rem;font-weight:700;}
+.divider{border:none;border-top:1px solid rgba(255,255,255,0.07);margin:0;}
+.guarantee{text-align:center;padding:40px 24px;color:#94a3b8;font-size:0.9rem;}
+footer{background:#060e1c;text-align:center;padding:24px;color:#64748b;font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.05);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo-mark">
+      <div class="logo-icon">10</div>
+      <div class="logo-text"><span class="logo-top">GET 10 CLIENTS</span><span class="logo-bottom">30-Day Local Business Challenge</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="/members">🏠 Home</a>
+      <a href="/members#modules">📹 Modules</a>
+      <a href="/members#bonuses">🎁 Bonuses</a>
+      <a href="mailto:support@get10clients.com">📧 Support</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">✅ Purchase Confirmed — You're In!</div>
+  <h1>Welcome to <span>Get 10 Clients</span> 🎉</h1>
+  <p class="sub">You made a great decision. Here's everything you need to land your first 10 local business clients in the next 30 days.</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div>Bookmark this page</div>
+    <div class="step"><div class="step-num">2</div>Check your email for login details</div>
+    <div class="step"><div class="step-num">3</div>Start with Module 1 below</div>
+  </div>
+  <div class="video-wrap">
+    <span class="video-placeholder">🎬 Welcome video coming soon</span>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <div class="section-label">Your Course</div>
+  <div class="section-title">The 6 Modules — <span>Start Here</span></div>
+  <div class="modules-grid">
+    <div class="module-card"><div class="module-num">Module 1</div><h3>The Local Client Mindset Shift</h3><p>Why local business owners are the best clients and how to position yourself so they want to work with you.</p><a href="/modules/module-1" class="module-btn">Start Module →</a></div>
+    <div class="module-card"><div class="module-num">Module 2</div><h3>Finding Your First 50 Prospects</h3><p>Build a list of 50 warm local prospects in your area in under 2 hours.</p><a href="/modules/module-2" class="module-btn">Start Module →</a></div>
+    <div class="module-card"><div class="module-num">Module 3</div><h3>The Perfect First Message</h3><p>Word-for-word scripts that get responses from local business owners.</p><a href="/modules/module-3" class="module-btn">Start Module →</a></div>
+    <div class="module-card"><div class="module-num">Module 4</div><h3>The 15-Minute Discovery Call</h3><p>How to run a call that makes the business owner sell themselves on working with you.</p><a href="/modules/module-4" class="module-btn">Start Module →</a></div>
+    <div class="module-card"><div class="module-num">Module 5</div><h3>The Proposal That Closes</h3><p>A one-page proposal template that closes local business clients without overwhelming them.</p><a href="/modules/module-5" class="module-btn">Start Module →</a></div>
+    <div class="module-card"><div class="module-num">Module 6</div><h3>The Referral Engine</h3><p>Turn your first 10 clients into 30 with the referral system that runs itself.</p><a href="/modules/module-6" class="module-btn">Start Module →</a></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <div class="section-label">Your Bonuses</div>
+  <div class="section-title">Fast-Action <span>Bonuses</span></div>
+  <div class="bonus-grid">
+    <div class="bonus-card"><h3>🗂️ Local Prospect Tracker</h3><p>Pre-built Notion database to track every prospect, conversation, and proposal.</p><a href="/bonuses/prospect-tracker" class="bonus-btn">Access Bonus →</a></div>
+    <div class="bonus-card"><h3>📧 Outreach Swipe File</h3><p>15 proven DM and email scripts for cold outreach and follow-ups.</p><a href="/bonuses/swipe-file" class="bonus-btn">Access Bonus →</a></div>
+    <div class="bonus-card"><h3>📋 One-Page Proposal Template</h3><p>The exact proposal format that closes local business clients.</p><a href="/bonuses/proposal-template" class="bonus-btn">Access Bonus →</a></div>
+    <div class="bonus-card"><h3>🎯 Niche Selector Scorecard</h3><p>Find which local business categories have the highest budgets and lowest competition.</p><a href="/bonuses/niche-selector" class="bonus-btn">Access Bonus →</a></div>
+  </div>
+</div>
+
+<div class="guarantee">🛡️ 30-day money-back guarantee &nbsp;·&nbsp; Questions? <a href="mailto:support@get10clients.com" style="color:#60a5fa;">support@get10clients.com</a></div>
+
+<footer>&copy; 2026 Get 10 Clients &middot; All Rights Reserved</footer>
+</body>
+</html>
