@@ -112,5 +112,32 @@ footer{background:#060e1c;text-align:center;padding:24px;color:#64748b;font-size
 <div class="guarantee">🛡️ 30-day money-back guarantee &nbsp;·&nbsp; Questions? <a href="mailto:support@get10clients.com" style="color:#60a5fa;">support@get10clients.com</a></div>
 
 <footer>&copy; 2026 Get 10 Clients &middot; All Rights Reserved</footer>
+
+<script>
+// Auto-tag buyer in Global Control when they land on thank you page
+(function() {
+  // Only fire once per session
+  if (sessionStorage.getItem('gc_tagged')) return;
+
+  // Get email from URL param if Stripe passes it (?prefilled_email=...)
+  const params = new URLSearchParams(window.location.search);
+  const email = params.get('prefilled_email') || params.get('email') || '';
+
+  if (!email) return; // Can't tag without email — needs Stripe to pass it
+
+  const payload = JSON.stringify({ email: email });
+
+  fetch('https://api.globalcontrol.io/api/ai/tags/fire-tag/6a01361d7a98f2fec573491a', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-KEY': '14a90d89c27094ee877bfdade90256d86bd1e4f51912698da36ed075c90bed72'
+    },
+    body: payload
+  }).then(() => {
+    sessionStorage.setItem('gc_tagged', '1');
+  }).catch(() => {});
+})();
+</script>
 </body>
 </html>
