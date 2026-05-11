@@ -22,6 +22,11 @@ html,body{background:#0a1628;}
 body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);line-height:1.6;}
 a{text-decoration:none;color:inherit;}
 
+.logo-mark{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.logo-icon{background:linear-gradient(135deg,#1a56db,#3b82f6);color:#fff;font-size:1.1rem;font-weight:900;width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:-1px;}
+.logo-text{display:flex;flex-direction:column;}
+.logo-top{font-size:0.95rem;font-weight:900;color:#fff;letter-spacing:0.03em;line-height:1.1;}
+.logo-bottom{font-size:0.65rem;font-weight:600;color:#60a5fa;letter-spacing:0.06em;text-transform:uppercase;}
 /* NAV */
 nav{background:rgba(10,22,40,0.95);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(26,86,219,0.3);padding:16px 0;}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;}
@@ -150,7 +155,10 @@ footer{background:#060e1c;text-align:center;padding:32px 24px;color:var(--gray);
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="/"><img src="logo.png" alt="Get 10 Clients"></a>
+    <a href="/" class="logo-mark">
+      <div class="logo-icon">10</div>
+      <div class="logo-text"><span class="logo-top">GET 10 CLIENTS</span><span class="logo-bottom">30-Day Local Business Challenge</span></div>
+    </a>
     <a href="#pricing" class="nav-cta">Get Instant Access →</a>
   </div>
 </nav>
@@ -435,4 +443,5 @@ footer{background:#060e1c;text-align:center;padding:32px 24px;color:var(--gray);
 </footer>
 </body>
 </html>
+
 
