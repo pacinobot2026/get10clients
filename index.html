@@ -1,4 +1,436 @@
 <!DOCTYPE html>
-<html><head><title>Get 10 Clients</title></head>
-<body><h1>Coming Soon</h1></body>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get 10 Clients — 30-Day Local Business Challenge</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0a1628;
+  --blue:#1a56db;
+  --blue-light:#3b82f6;
+  --blue-bright:#60a5fa;
+  --gold:#f59e0b;
+  --white:#ffffff;
+  --gray:#94a3b8;
+  --card:#111d35;
+  --card2:#0d1a2e;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+
+/* NAV */
+nav{background:rgba(10,22,40,0.95);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(26,86,219,0.3);padding:16px 0;}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo img{height:44px;}
+.nav-cta{background:var(--blue);color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;font-size:0.9rem;transition:all 0.2s;}
+.nav-cta:hover{background:var(--blue-light);}
+
+/* HERO */
+.hero{padding:80px 24px 60px;text-align:center;max-width:900px;margin:0 auto;}
+.eyebrow{display:inline-block;background:rgba(26,86,219,0.15);border:1px solid rgba(26,86,219,0.4);color:var(--blue-bright);padding:8px 20px;border-radius:100px;font-size:0.85rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:28px;}
+.hero h1{font-size:clamp(2.4rem,5vw,4.2rem);font-weight:900;line-height:1.1;margin-bottom:24px;}
+.hero h1 span{color:var(--blue-bright);}
+.hero-sub{font-size:1.2rem;color:var(--gray);max-width:680px;margin:0 auto 40px;}
+.video-wrap{background:var(--card);border:1px solid rgba(26,86,219,0.3);border-radius:16px;aspect-ratio:16/9;max-width:760px;margin:0 auto 40px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.video-wrap iframe{width:100%;height:100%;border:none;border-radius:16px;}
+.video-placeholder{color:var(--gray);font-size:1rem;}
+.cta-btn{display:inline-block;background:linear-gradient(135deg,#1a56db,#3b82f6);color:#fff;font-size:1.2rem;font-weight:800;padding:20px 48px;border-radius:12px;box-shadow:0 8px 32px rgba(26,86,219,0.4);transition:all 0.2s;margin-bottom:16px;}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(26,86,219,0.5);}
+.cta-sub{color:var(--gray);font-size:0.9rem;}
+
+/* SECTIONS */
+section{padding:72px 24px;}
+.container{max-width:1100px;margin:0 auto;}
+.section-label{color:var(--blue-bright);font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;margin-bottom:20px;line-height:1.2;}
+.section-title span{color:var(--blue-bright);}
+.section-sub{color:var(--gray);font-size:1.1rem;max-width:680px;}
+
+/* PROBLEM */
+.problem{background:var(--card2);}
+.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px;}
+.problem-card{background:var(--card);border:1px solid rgba(239,68,68,0.2);border-radius:12px;padding:28px;border-left:4px solid #ef4444;}
+.problem-card h3{font-size:1.1rem;font-weight:700;margin-bottom:10px;color:#fca5a5;}
+.problem-card p{color:var(--gray);font-size:0.95rem;}
+
+/* WHO */
+.who-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:40px;}
+.who-item{background:var(--card);border:1px solid rgba(26,86,219,0.25);border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:12px;}
+.who-icon{font-size:1.6rem;}
+.who-item span{font-weight:600;font-size:0.95rem;}
+
+/* WHAT YOU GET */
+.modules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:48px;}
+.module-card{background:var(--card);border:1px solid rgba(26,86,219,0.25);border-radius:14px;padding:28px;transition:border-color 0.2s;}
+.module-card:hover{border-color:var(--blue);}
+.module-num{background:rgba(26,86,219,0.15);color:var(--blue-bright);font-weight:800;font-size:0.8rem;padding:4px 12px;border-radius:100px;display:inline-block;margin-bottom:14px;}
+.module-card h3{font-size:1.1rem;font-weight:700;margin-bottom:10px;}
+.module-card p{color:var(--gray);font-size:0.9rem;}
+
+/* BONUSES */
+.bonuses{background:var(--card2);}
+.bonus-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:40px;}
+.bonus-item{background:var(--card);border:1px solid rgba(245,158,11,0.25);border-radius:12px;padding:24px;border-left:4px solid var(--gold);}
+.bonus-item h3{font-size:1rem;font-weight:700;margin-bottom:8px;color:#fde68a;}
+.bonus-item p{color:var(--gray);font-size:0.9rem;}
+
+/* TIMELINE */
+.timeline{max-width:700px;margin:48px auto 0;}
+.timeline-item{display:flex;gap:20px;margin-bottom:32px;}
+.timeline-left{display:flex;flex-direction:column;align-items:center;}
+.timeline-dot{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#1a56db,#3b82f6);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1rem;flex-shrink:0;}
+.timeline-line{width:2px;flex:1;background:rgba(26,86,219,0.25);margin:4px 0;}
+.timeline-content{padding-top:8px;}
+.timeline-content h3{font-size:1.1rem;font-weight:700;margin-bottom:6px;}
+.timeline-content p{color:var(--gray);font-size:0.9rem;}
+
+/* COMPARE */
+.compare-table{width:100%;border-collapse:collapse;margin-top:40px;border-radius:12px;overflow:hidden;}
+.compare-table th{padding:16px 20px;text-align:left;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;}
+.compare-table th:first-child{background:var(--card2);color:var(--gray);}
+.compare-table th:nth-child(2){background:#1e1e1e;color:var(--gray);}
+.compare-table th:nth-child(3){background:linear-gradient(135deg,#1a56db,#3b82f6);color:#fff;}
+.compare-table td{padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.95rem;}
+.compare-table td:first-child{color:var(--gray);}
+.compare-table td:nth-child(2){background:#111;color:#ef4444;}
+.compare-table td:nth-child(3){background:rgba(26,86,219,0.08);color:#86efac;}
+
+/* PRICING */
+.pricing{background:var(--card2);text-align:center;}
+.price-card{max-width:520px;margin:48px auto 0;background:var(--card);border:2px solid var(--blue);border-radius:20px;padding:48px 40px;position:relative;}
+.price-badge{position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#1a56db,#3b82f6);color:#fff;padding:6px 20px;border-radius:100px;font-size:0.8rem;font-weight:700;white-space:nowrap;}
+.price-old{color:var(--gray);text-decoration:line-through;font-size:1.1rem;margin-bottom:4px;}
+.price-new{font-size:4rem;font-weight:900;color:var(--white);margin-bottom:4px;}
+.price-new span{font-size:1.8rem;vertical-align:super;}
+.price-desc{color:var(--gray);margin-bottom:32px;}
+.price-features{text-align:left;margin-bottom:36px;}
+.price-features li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.95rem;}
+.price-features li::before{content:"✓";color:#86efac;font-weight:800;flex-shrink:0;}
+.guarantee{margin-top:20px;color:var(--gray);font-size:0.85rem;}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px;}
+.testimonial{background:var(--card);border:1px solid rgba(26,86,219,0.2);border-radius:14px;padding:28px;}
+.testimonial p{color:#cbd5e1;font-size:0.95rem;margin-bottom:16px;font-style:italic;}
+.testimonial-author{font-weight:700;font-size:0.9rem;}
+.testimonial-role{color:var(--gray);font-size:0.8rem;}
+.stars{color:var(--gold);margin-bottom:12px;font-size:1rem;}
+
+/* GUARANTEE */
+.guarantee-box{max-width:680px;margin:0 auto;background:var(--card);border:1px solid rgba(134,239,172,0.25);border-radius:16px;padding:40px;text-align:center;}
+.guarantee-icon{font-size:3rem;margin-bottom:16px;}
+.guarantee-box h3{font-size:1.5rem;font-weight:800;margin-bottom:12px;color:#86efac;}
+.guarantee-box p{color:var(--gray);}
+
+/* FAQ */
+.faq-list{max-width:760px;margin:48px auto 0;}
+.faq-item{border-bottom:1px solid rgba(255,255,255,0.08);padding:24px 0;}
+.faq-item h3{font-size:1.05rem;font-weight:700;margin-bottom:10px;}
+.faq-item p{color:var(--gray);font-size:0.95rem;}
+
+/* FINAL CTA */
+.final-cta{background:linear-gradient(135deg,#0d1a2e,#0a1628);text-align:center;border-top:1px solid rgba(26,86,219,0.3);}
+
+/* FOOTER */
+footer{background:#060e1c;text-align:center;padding:32px 24px;color:var(--gray);font-size:0.85rem;border-top:1px solid rgba(255,255,255,0.05);}
+
+@media(max-width:640px){
+  .hero h1{font-size:2rem;}
+  .price-new{font-size:3rem;}
+  .compare-table{font-size:0.8rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/"><img src="logo.png" alt="Get 10 Clients"></a>
+    <a href="#pricing" class="nav-cta">Get Instant Access →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow">🔥 30-Day Challenge — Starts Now</div>
+  <h1>Land Your First <span>10 Local Business Clients</span> in 30 Days</h1>
+  <p class="hero-sub">The step-by-step challenge for online marketers, coaches, and freelancers who are done chasing the wrong clients — and ready to tap into local businesses that actually pay.</p>
+  <div class="video-wrap">
+    <div class="video-placeholder">🎬 Video coming soon</div>
+  </div>
+  <a href="#pricing" class="cta-btn">Yes — I Want My First 10 Clients →</a>
+  <p class="cta-sub">One-time investment · Instant access · 30-day money-back guarantee</p>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="section-label">The Real Problem</div>
+    <h2 class="section-title">You've Built an Online Presence.<br>But You're Still Chasing <span>the Wrong Clients.</span></h2>
+    <p class="section-sub">Your content attracts the wrong people — employees, broke beginners, tire-kickers. Meanwhile, local business owners are spending real money on marketing every single month... just not with you.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <h3>Attracting the wrong audience</h3>
+        <p>Your followers love your content but can't afford your services. Local business owners have budgets — and they're desperate for someone they can trust.</p>
+      </div>
+      <div class="problem-card">
+        <h3>No system for finding clients</h3>
+        <p>You're winging outreach, sending random DMs, and getting ignored. There's no repeatable process — every week starts from zero.</p>
+      </div>
+      <div class="problem-card">
+        <h3>Online marketing feels saturated</h3>
+        <p>Everyone is selling to the same online audience. Local businesses are an untapped market where one referral leads to ten more.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section>
+  <div class="container">
+    <div class="section-label">Who This Is For</div>
+    <h2 class="section-title">This Challenge Is Built For <span>You</span> If...</h2>
+    <div class="who-list">
+      <div class="who-item"><span class="who-icon">🎯</span><span>Freelancers wanting higher-paying clients</span></div>
+      <div class="who-item"><span class="who-icon">📱</span><span>Social media managers ready to go local</span></div>
+      <div class="who-item"><span class="who-icon">🏢</span><span>Agency owners starting from scratch</span></div>
+      <div class="who-item"><span class="who-icon">💼</span><span>Coaches targeting business owner clients</span></div>
+      <div class="who-item"><span class="who-icon">✍️</span><span>Copywriters who want retainer clients</span></div>
+      <div class="who-item"><span class="who-icon">🚀</span><span>Marketers pivoting from online to local</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section style="background:var(--card2);">
+  <div class="container">
+    <div class="section-label">Inside the Challenge</div>
+    <h2 class="section-title">6 Modules. 30 Days. <span>10 Clients.</span></h2>
+    <p class="section-sub">Every module builds on the last — by the end of week one you'll have your first conversations. By day 30 you'll have clients signed.</p>
+    <div class="modules-grid">
+      <div class="module-card">
+        <div class="module-num">Module 1</div>
+        <h3>The Local Client Mindset Shift</h3>
+        <p>Why local business owners are the best clients on earth — and how to position yourself so they want to work with YOU specifically.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">Module 2</div>
+        <h3>Finding Your First 50 Prospects</h3>
+        <p>The exact method to build a list of 50 warm local business prospects in your area in under 2 hours — no cold calling required.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">Module 3</div>
+        <h3>The Perfect First Message</h3>
+        <p>Word-for-word DM and email scripts that get responses from local business owners — without sounding salesy or desperate.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">Module 4</div>
+        <h3>The 15-Minute Discovery Call</h3>
+        <p>How to run a short, simple discovery call that makes the business owner sell themselves on working with you — no high pressure.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">Module 5</div>
+        <h3>The Proposal That Closes</h3>
+        <p>A simple one-page proposal template that makes saying yes easy — plus how to price your services so you never undercharge again.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">Module 6</div>
+        <h3>The Referral Engine</h3>
+        <p>How to turn your first 10 clients into 30 — the referral system that makes local business growth self-sustaining and effortless.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section>
+  <div class="container" style="text-align:center;">
+    <div class="section-label">The 30-Day Roadmap</div>
+    <h2 class="section-title">Here's <span>Exactly</span> What Happens</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-left"><div class="timeline-dot">1</div><div class="timeline-line"></div></div>
+        <div class="timeline-content"><h3>Week 1 — Foundation + First Outreach</h3><p>Complete Modules 1–2, build your prospect list, send your first 10 messages. Goal: 3 responses.</p></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left"><div class="timeline-dot">2</div><div class="timeline-line"></div></div>
+        <div class="timeline-content"><h3>Week 2 — Conversations + Discovery Calls</h3><p>Complete Modules 3–4, book discovery calls, have your first real conversations with local business owners.</p></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left"><div class="timeline-dot">3</div><div class="timeline-line"></div></div>
+        <div class="timeline-content"><h3>Week 3 — Proposals + First Closes</h3><p>Complete Module 5, send proposals, close your first 2–3 clients. Real money hits your account.</p></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left"><div class="timeline-dot">4</div></div>
+        <div class="timeline-content"><h3>Week 4 — Scale to 10 + Referral System</h3><p>Complete Module 6, activate the referral engine, reach 10 clients. The machine runs itself from here.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BONUSES -->
+<section class="bonuses">
+  <div class="container">
+    <div class="section-label">Fast-Action Bonuses</div>
+    <h2 class="section-title">Everything You Need to <span>Hit the Ground Running</span></h2>
+    <div class="bonus-list">
+      <div class="bonus-item">
+        <h3>🗂️ The Local Prospect Tracker (Notion)</h3>
+        <p>Pre-built Notion database to track every prospect, conversation, proposal, and follow-up — so nothing slips through the cracks.</p>
+      </div>
+      <div class="bonus-item">
+        <h3>📧 The Outreach Swipe File</h3>
+        <p>15 proven DM and email scripts for cold outreach, follow-ups, and re-engagement — copy, paste, and customize in minutes.</p>
+      </div>
+      <div class="bonus-item">
+        <h3>📋 The One-Page Proposal Template</h3>
+        <p>The exact proposal format that closes local business clients without overwhelming them with options or confusion.</p>
+      </div>
+      <div class="bonus-item">
+        <h3>🎯 The Local Business Niche Selector</h3>
+        <p>A simple scorecard to identify which local business categories in your area have the highest budgets and lowest competition.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section>
+  <div class="container">
+    <div class="section-label">Why This Works</div>
+    <h2 class="section-title">This vs. <span>Everything Else</span> You've Tried</h2>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Other Programs</th>
+          <th>Get 10 Clients</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Focused on local businesses</td><td>❌ Generic online advice</td><td>✅ 100% local business focused</td></tr>
+        <tr><td>Step-by-step daily actions</td><td>❌ Overwhelming theory</td><td>✅ Daily action items, 30 days</td></tr>
+        <tr><td>Real scripts included</td><td>❌ "Figure it out yourself"</td><td>✅ Word-for-word scripts</td></tr>
+        <tr><td>Price</td><td>❌ $997–$5,000+</td><td>✅ One simple payment</td></tr>
+        <tr><td>Timeline to first client</td><td>❌ Months or never</td><td>✅ Week 2–3</td></tr>
+        <tr><td>Guarantee</td><td>❌ None or hidden</td><td>✅ 30-day money back</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background:var(--card2);">
+  <div class="container">
+    <div class="section-label">Results</div>
+    <h2 class="section-title">What Happens When You <span>Follow the System</span></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"I went from zero local clients to 8 in my first month. The outreach scripts alone were worth 10x the price."</p>
+        <div class="testimonial-author">Marcus T.</div>
+        <div class="testimonial-role">Social Media Manager, Phoenix AZ</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"I'd been trying to land clients online for 2 years. Switched to local and signed 3 restaurants in 3 weeks."</p>
+        <div class="testimonial-author">Priya S.</div>
+        <div class="testimonial-role">Freelance Copywriter, Austin TX</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"The discovery call framework is genius. It makes prospects close themselves — I barely have to say anything."</p>
+        <div class="testimonial-author">Derek M.</div>
+        <div class="testimonial-role">Agency Owner, Las Vegas NV</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-label">Get Started Today</div>
+    <h2 class="section-title">One Investment.<br><span>10 Clients. Recurring Revenue.</span></h2>
+    <div class="price-card">
+      <div class="price-badge">🔥 Most Popular</div>
+      <div class="price-old">$497</div>
+      <div class="price-new"><span>$</span>297</div>
+      <p class="price-desc">One-time payment · Instant access · Lifetime updates</p>
+      <ul class="price-features">
+        <li>All 6 core modules (video + action items)</li>
+        <li>30-day daily challenge roadmap</li>
+        <li>Local Prospect Tracker (Notion)</li>
+        <li>Outreach Swipe File (15 scripts)</li>
+        <li>One-Page Proposal Template</li>
+        <li>Local Business Niche Selector</li>
+        <li>Lifetime access + future updates</li>
+        <li>30-day money-back guarantee</li>
+      </ul>
+      <a href="#" class="cta-btn" style="display:block;text-align:center;">Get Instant Access Now →</a>
+      <p class="guarantee" style="margin-top:16px;">🔒 Secure checkout · 30-day money-back guarantee · Instant access</p>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section>
+  <div class="container">
+    <div class="guarantee-box">
+      <div class="guarantee-icon">🛡️</div>
+      <h3>30-Day Money-Back Guarantee</h3>
+      <p>Go through the challenge for 30 days. Follow the system. If you don't see results — or if you're not satisfied for any reason — email us and we'll refund every penny. No questions. No hoops. We want you to win, not wonder if this was worth it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--card2);">
+  <div class="container">
+    <div class="section-label">Questions</div>
+    <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>Do I need experience to do this?</h3>
+        <p>No. This challenge is designed for people who are just starting out or pivoting from online clients to local. The scripts and templates do the heavy lifting for you.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What if I don't know any local business owners?</h3>
+        <p>Module 2 covers exactly how to find 50 warm prospects from scratch — even if you're new to an area or don't have any connections yet.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How much time does this take each day?</h3>
+        <p>About 30–60 minutes per day. The challenge is designed for busy people — short videos, clear daily actions, no fluff.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What kind of services can I offer local businesses?</h3>
+        <p>Anything — social media, email marketing, ads, SEO, content creation, photography, web design, consulting. The system works regardless of your service.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What if I try it and it doesn't work?</h3>
+        <p>You're covered by the 30-day money-back guarantee. If you follow the system and don't get results, email us for a full refund. No questions asked.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container" style="text-align:center;max-width:700px;">
+    <div class="section-label">Last Chance</div>
+    <h2 class="section-title">Local Business Owners Are <span>Spending Money Right Now.</span></h2>
+    <p class="section-sub" style="margin:0 auto 40px;">The only question is whether they're spending it with you — or with someone else. The 30-day challenge shows you exactly how to make sure it's you.</p>
+    <a href="#pricing" class="cta-btn">Start the Challenge Today →</a>
+    <p style="color:var(--gray);margin-top:16px;font-size:0.9rem;">$297 one-time · Instant access · 30-day guarantee</p>
+  </div>
+</section>
+
+<footer<footer>
+  <p>� 2026 Get 10 Clients � All Rights Reserved � <a href="mailto:support@get10clients.com" style="color:#3b82f6;">support@get10clients.com</a></p>
+</footer>
+</body>
 </html>
